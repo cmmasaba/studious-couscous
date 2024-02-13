@@ -40,8 +40,11 @@ INSTALLED_APPS = [
 
     # Third-party apps
     'rest_framework',
+    'crispy_forms',
+    'crispy_bootstrap4',
 
     # Local apps
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'api_service.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [Path.joinpath(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,8 +83,12 @@ WSGI_APPLICATION = 'api_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'api_service',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -110,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -121,8 +128,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# Location of static files in local development
+STATICFILES_DIRS = [
+    Path.joinpath(BASE_DIR, 'static')
+]
+# Location of static files in production
+STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
+# Instructions to Django on how to find the static files
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder', # Look in STATICFILES_DIRS
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder', # Look in each app's static directory
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Use custom user model
+AUTH_USER_MODEL = 'users.CustomUserModel'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
