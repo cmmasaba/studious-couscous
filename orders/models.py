@@ -1,6 +1,6 @@
 from django.db import models
 
-ORDER_STATUS = ('Pending', 'Cancelled', 'Completed')
+ORDER_STATUS = ['Pending', 'Cancelled', 'Completed']
 
 # Create your models here.
 class Order(models.Model):
@@ -14,11 +14,11 @@ class Order(models.Model):
     # create a many-to-one relationship with the custoners model. 
     #Many orders can belong to one customer
     customer = models.ForeignKey('customers.Customer',
-                                 relation_name='orders', on_delete=models.CASCADE)
+                                 related_name='orders', on_delete=models.CASCADE)
     # similarly a many-to-one relationship with items model.
     # An order can only contain a single item but one item can be in multiple orders
-    item = models.ForeignKey('items.Items',
-                             relation_name='orders', on_delete=models.CASCADE)
+    item = models.ForeignKey('items.Item',
+                             related_name='orders', on_delete=models.CASCADE)
 
     @property
     def amount(self) -> float:
