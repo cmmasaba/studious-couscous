@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # Third-party apps
     'rest_framework',
     'crispy_forms',
-    'crispy_bootstrap4',
+    'crispy_bootstrap5',
 
     # Local apps
     'users.apps.UsersConfig',
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'api_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'api_service',
+        'NAME': 'api-service',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
@@ -148,4 +148,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Use custom user model
 AUTH_USER_MODEL = 'users.CustomUserModel'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
