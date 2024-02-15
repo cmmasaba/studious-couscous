@@ -1,14 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class CustomUserModel(models.Model):
+class CustomUserModel(AbstractUser):
     '''A customer user model for users.
 
     Args:
         models (Model): A model class from django.db.models
     '''
-    user_code = models.UUIDField(primary_key=True, editable=False)
-    username = models.CharField(max_length=100, unique=True)
-    email = models.EmailField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
+    pass
