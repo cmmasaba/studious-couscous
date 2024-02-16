@@ -1,6 +1,10 @@
 from django.db import models
 
-ORDER_STATUS = ['Pending', 'Cancelled', 'Completed']
+ORDER_STATUS = {
+    'Pending': 'Pending',
+    'Cancelled': 'Cancelled',
+    'Completed': 'Completed'
+}
 
 # Create your models here.
 class Order(models.Model):
@@ -12,7 +16,7 @@ class Order(models.Model):
                               max_length=10)  # the lifecycle of the order
 
     # create a many-to-one relationship with the custoners model. 
-    #Many orders can belong to one customer
+    # Many orders can belong to one customer
     customer = models.ForeignKey('customers.Customer',
                                  related_name='orders', on_delete=models.CASCADE)
     # similarly a many-to-one relationship with items model.
