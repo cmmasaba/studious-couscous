@@ -24,6 +24,6 @@ class CustomerViewSet(viewsets.ModelViewSet):
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
-        'customers': reverse('customers-list', request=request, format=format),
+        'customers': reverse('customer-list', request=request, format=format),
         'orders': reverse('order-list', request=request, format=format)
     })
