@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth', include('rest_framework.urls')),
-    path('', include('customers.urls')),
+    # include urls for auhentication with mozilla-django-oidc
+    path('api/', include('mozilla_django_oidc.urls')),
+    path('', include('customers.urls'), name='root'),
 ]
