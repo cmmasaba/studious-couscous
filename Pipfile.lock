@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "56f5633e39da64669abef4535542cc54adb6fdb915a4bf4cac06bf60797ae1ff"
+            "sha256": "d272141b3bda7b7dc2715751e8598858b2932e88bf50b5fed4b45d27fda057a7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -258,6 +258,15 @@
             "markers": "python_version >= '3.8'",
             "version": "==2.1"
         },
+        "django-environ": {
+            "hashes": [
+                "sha256:0ff95ab4344bfeff693836aa978e6840abef2e2f1145adff7735892711590c05",
+                "sha256:f32a87aa0899894c27d4e1776fa6b477e8164ed7f6b3e410a62a6d72caaf64be"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.6' and python_version < '4'",
+            "version": "==0.11.2"
+        },
         "django-filter": {
             "hashes": [
                 "sha256:67583aa43b91fe8c49f74a832d95f4d8442be628fd4c6d65e9f811f5153a4e5c",
@@ -292,6 +301,14 @@
             "markers": "python_version >= '3.5'",
             "version": "==3.6"
         },
+        "josepy": {
+            "hashes": [
+                "sha256:308b3bf9ce825ad4d4bba76372cf19b5dc1c2ce96a9d298f9642975e64bd13dd",
+                "sha256:d2b36a30f316269f3242f4c2e45e15890784178af5ec54fa3e49cf9234ee22e0"
+            ],
+            "markers": "python_version >= '3.7' and python_version < '4.0'",
+            "version": "==1.14.0"
+        },
         "markdown": {
             "hashes": [
                 "sha256:d43323865d89fc0cb9b20c75fc8ad313af307cc087e84b657d9eec768eddeadd",
@@ -300,6 +317,14 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==3.5.2"
+        },
+        "mozilla-django-oidc": {
+            "hashes": [
+                "sha256:01a4ab19341503ec06fcbe6ea12329ed709d4226bf1d2c7541b0b1c4c4e8a738",
+                "sha256:7eb9d05a033ac61a74ea3be33d3f822818bc8dcab81c471fef94c0d65c7cbe1c"
+            ],
+            "index": "pypi",
+            "version": "==4.0.0"
         },
         "psycopg2-binary": {
             "hashes": [
@@ -386,6 +411,14 @@
                 "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"
             ],
             "version": "==2.21"
+        },
+        "pyopenssl": {
+            "hashes": [
+                "sha256:6aa33039a93fffa4563e655b61d11364d01264be8ccb49906101e02a334530bf",
+                "sha256:ba07553fb6fd6a7a2259adb9b84e12302a9a8a75c44046e8bb5d3e5ee887e3c3"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==24.0.0"
         },
         "pytz": {
             "hashes": [
