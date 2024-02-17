@@ -1,6 +1,6 @@
 from customers.models import Customer
 from rest_framework import permissions
-from orders.permissions import IsOwnerOrReadOnly
+from customers.permissions import IsOwner
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -16,8 +16,9 @@ class CustomerViewSet(viewsets.ModelViewSet):
     """
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
-                          IsOwnerOrReadOnly]
+    # only permit authenticated users and owners of the object
+    permission_classes = [permissions.IsAuthenticated,
+                          IsOwner]
 
 
 """Defning the api root"""
