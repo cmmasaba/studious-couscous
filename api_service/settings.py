@@ -11,19 +11,28 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Get environment variables from .env file
+environ.Env.read_env(Path.joinpath(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-prhsfj_s5s3spm!ytwcq6h11f3qcz$+6^=5^hv3ddbh8@8!fo&'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third-party apps
+    'mozilla_django_oidc',
     'rest_framework',
     'crispy_forms',
     'crispy_bootstrap5',
@@ -87,11 +97,11 @@ WSGI_APPLICATION = 'api_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'api-service',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
@@ -154,61 +164,46 @@ AUTH_USER_MODEL = 'users.CustomUserModel'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# OpenID Connect settings
+AUTHENTICATION_BACKENDS = (
+    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+)
+
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        # ...
-        'oidc_auth.authentication.JSONWebTokenAuthentication',
-        'oidc_auth.authentication.BearerTokenAuthentication',
-    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'mozilla_django_oidc.contrib.drf.OIDCAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
 }
 
-# OIDC_AUTH settings
-OIDC_AUTH = {
-    # Specify OpenID Connect endpoint. Configuration will be
-    # automatically done based on the discovery document found
-    # at <endpoint>/.well-known/openid-configuration
-    'OIDC_ENDPOINT': 'https://accounts.google.com',
+OIDC_RP_CLIENT_ID = env('OIDC_RP_CLIENT_ID')
+OIDC_RP_CLIENT_SECRET = env('OIDC_RP_CLIENT_SECRET')
+OIDC_OP_AUTHORIZATION_ENDPOINT = env('OIDC_OP_AUTHORIZATION_ENDPOINT')
+OIDC_OP_TOKEN_ENDPOINT = env('OIDC_OP_TOKEN_ENDPOINT')
+OIDC_OP_USER_ENDPOINT = env('OIDC_OP_USER_ENDPOINT')
+OIDC_OP_JWKS_ENDPOINT = env('OIDC_OP_JWKS_ENDPOINT')
+OIDC_RP_SIGN_ALGO = env('OIDC_RP_SIGN_ALGO')
 
-    # The Claims Options can now be defined by a static string.
-    # ref: https://docs.authlib.org/en/latest/jose/jwt.html#jwt-payload-claims-validation
-    # The old OIDC_AUDIENCES option is removed in favor of this new option.
-    # `aud` is only required, when you set it as an essential claim.
-    'OIDC_CLAIMS_OPTIONS': {
-        'aud': {
-            'values': ['users', 'admin'],
-            'essential': True,
-        }
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
     },
-    
-    # (Optional) Function that resolves id_token into user.
-    # This function receives a request and an id_token dict and expects to
-    # return a User object. The default implementation tries to find the user
-    # based on username (natural key) taken from the 'sub'-claim of the
-    # id_token.
-    'OIDC_RESOLVE_USER_FUNCTION': 'oidc_auth.authentication.get_user_by_id',
-    
-    # (Optional) Number of seconds in the past valid tokens can be 
-    # issued (default 600)
-    'OIDC_LEEWAY': 600,
-    
-    # (Optional) Time before signing keys will be refreshed (default 24 hrs)
-    'OIDC_JWKS_EXPIRATION_TIME': 24*60*60,
-
-    # (Optional) Time before bearer token validity is verified again (default 10 minutes)
-    'OIDC_BEARER_TOKEN_EXPIRATION_TIME': 10*60,
-    
-    # (Optional) Token prefix in JWT authorization header (default 'JWT')
-    'JWT_AUTH_HEADER_PREFIX': 'JWT',
-    
-    # (Optional) Token prefix in Bearer authorization header (default 'Bearer')
-    'BEARER_AUTH_HEADER_PREFIX': 'Bearer',
-
-    # (Optional) Which Django cache to use
-    'OIDC_CACHE_NAME': 'default',
-
-    # (Optional) A cache key prefix when storing and retrieving cached values
-    'OIDC_CACHE_PREFIX': 'oidc_auth.',
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+    'loggers': {
+        'mozilla_django_oidc': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
 }
