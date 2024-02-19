@@ -13,6 +13,8 @@ psycopg2-binary = "==2.9.9"
 drf-oidc-auth = "*"
 mozilla-django-oidc = "*"
 django-environ = "==0.11.2"
+africastalking = "==1.2.7"
+flask = "*"
 
 [dev-packages]
 
