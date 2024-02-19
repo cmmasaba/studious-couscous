@@ -6,4 +6,4 @@ class IsOwner(permissions.BasePermission):
     """
     def has_object_permission(self, request, view, obj):
         # only owners of an object can edit it or view it.
-        return obj.owner == request.user
+        return obj.name == request.user
