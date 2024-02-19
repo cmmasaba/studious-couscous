@@ -1,5 +1,7 @@
 from django.db import models
 
+from send_sms import send_sms
+
 ORDER_STATUS = {
     'Pending': 'Pending',
     'Cancelled': 'Cancelled',
@@ -30,3 +32,8 @@ class Order(models.Model):
         Return the total amount.
         """
         return self.quantity * self.item.price
+    
+    def save(self, *args, **kwargs):
+        """Override the save method to send an SMS when the order is placed."""
+        send_sms([self.customer.phone_number], f"Your order of {self.quantity} {self.item.name} has been placed.")
+        super().save(*args, **kwargs)
