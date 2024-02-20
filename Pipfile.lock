@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "340b0359e3b9c901dc0c8291bc65aa72a156ed07b681d9d122157d216bed1e81"
+            "sha256": "5caf5c09a14d37686aa95f15f942f98328649d3b8c5e35ef182a58edf318c4f3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,14 +32,6 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==3.7.2"
-        },
-        "authlib": {
-            "hashes": [
-                "sha256:959ea62a5b7b5123c5059758296122b57cd2585ae2ed1c0622c21b371ffdae06",
-                "sha256:9637e4de1fb498310a56900b3e2043a206b03cb11c05422014b0302cbc814be3"
-            ],
-            "markers": "python_version >= '3.8'",
-            "version": "==1.3.0"
         },
         "blinker": {
             "hashes": [
@@ -317,14 +309,6 @@
             "index": "pypi",
             "markers": "python_version >= '3.6'",
             "version": "==3.14.0"
-        },
-        "drf-oidc-auth": {
-            "hashes": [
-                "sha256:243b44ffaf9bbb4a26445370616ab6b666a541479649e6bd3319ede502ea723b",
-                "sha256:9b3ee051e86709f2bb8bb9a7e9bb975b7d9a1cf2c55cadcdd5b6889454f99075"
-            ],
-            "index": "pypi",
-            "version": "==3.0.0"
         },
         "flask": {
             "hashes": [
