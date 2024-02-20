@@ -1,0 +1,7 @@
+africastalking==1.2.7
+Django==5.0.1
+django_environ==0.11.2
+djangorestframework==3.14.0
+Flask==3.0.2
+mozilla-django-oidc==2.0.0
+psycopg2==2.9.9
