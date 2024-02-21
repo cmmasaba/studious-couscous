@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     # Third-party apps
     'mozilla_django_oidc',
     'rest_framework',
-    'crispy_forms',
-    'crispy_bootstrap5',
     'drf_spectacular',
 
     # Local apps
@@ -162,12 +160,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Use custom user model
 AUTH_USER_MODEL = 'users.CustomUserModel'
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
-
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 # OpenID Connect settings
 AUTHENTICATION_BACKENDS = (
