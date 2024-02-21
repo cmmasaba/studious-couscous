@@ -1,0 +1,18 @@
+{% extends "rest_framework/base.html" %}
+{% load rest_framework %}
+
+{% block branding %}
+    <a class='navbar-brand' rel="nofollow" href='/api/v1'>
+        Studious Couscous Simple API
+    </a>
+{% endblock branding %}
+{% block userlinks %}
+    {% if user.is_authenticated %}
+        <form action="{% url 'oidc_logout' %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Log out</button>
+        </form>
+    {% else %}
+        <a class="btn btn-success" href="{% url 'oidc_authentication_init' %}" role="button">Log In</a>
+    {% endif %}
+{% endblock userlinks %}
