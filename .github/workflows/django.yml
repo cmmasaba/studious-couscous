@@ -13,7 +13,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.12]
+        python-version: [3.10, 3.11, 3.12]
 
     steps:
     - uses: actions/checkout@v4
@@ -26,5 +26,23 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DEBUG: ${{ secrets.DEBUG }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        OIDC_RP_CLIENT_ID: ${{ secrets.OIDC_RP_CLIENT_ID }}
+        OIDC_RP_CLIENT_SECRET: ${{ secrets.OIDC_RP_CLIENT_SECRET }}
+        OIDC_RP_SIGN_ALGO: ${{ secrets.OIDC_RP_SIGN_ALGO }}
+        OIDC_OP_USERINFO_ENDPOINT: ${{ secrets.OIDC_OP_USERINFO_ENDPOINT }}
+        OIDC_OP_JWKS_ENDPOINT: ${{ secrets.OIDC_OP_JWKS_ENDPOINT }}
+        OIDC_OP_AUTHORIZATION_ENDPOINT: ${{ secrets.OIDC_OP_AUTHORIZATION_ENDPOINT }}
+        OIDC_OP_TOKEN_ENDPOINT: ${{ secrets.OIDC_OP_TOKEN_ENDPOINT }}
+        AFT_API_KEY: ${{ secrets.AFT_API_KEY }}
+        AFT_PORT: ${{ secrets.AFT_PORT }}
+        AFT_SHORT_CODE: ${{ secrets.AFT_SHORT_CODE }}
+        AFT_USERNAME: ${{ secrets.AFT_USERNAME }}
       run: |
         python manage.py test
