@@ -52,12 +52,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
     'crispy_bootstrap5',
+    'drf_spectacular',
 
     # Local apps
     'users.apps.UsersConfig',
     'customers.apps.CustomersConfig',
     'items.apps.ItemsConfig',
     'orders.apps.OrdersConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -177,6 +179,7 @@ REST_FRAMEWORK = {
         'mozilla_django_oidc.contrib.drf.OIDCAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 OIDC_RP_CLIENT_ID = env('OIDC_RP_CLIENT_ID')
@@ -207,3 +210,14 @@ LOGGING = {
         },
     },
 }
+
+# Spectacular settings
+SPECTACULAR_SETTINGS = {
+        'TITLE': 'Studious Couscous API Service',
+        'DESCRIPTION': 'A simple web api service that models the creating, modifying and deleting of Customers and Orders',
+        'VERSION': '1.0.0',
+        'SERVE_INCLUDE_SCHEMA': False,
+}
+
+LOGIN_REDIRECT_URL = '/api/v1/'
+LOGOUT_REDIRECT_URL = '/api/v1/'
