@@ -39,6 +39,11 @@ jobs:
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DEBUG: ${{ secrets.DEBUG }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
         OIDC_RP_CLIENT_ID: ${{ secrets.OIDC_RP_CLIENT_ID }}
         OIDC_RP_CLIENT_SECRET: ${{ secrets.OIDC_RP_CLIENT_SECRET }}
         OIDC_RP_SIGN_ALGO: ${{ secrets.OIDC_RP_SIGN_ALGO }}
