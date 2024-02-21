@@ -20,6 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # include urls for auhentication with mozilla-django-oidc
-    path('api/', include('mozilla_django_oidc.urls')),
-    path('', include('customers.urls'), name='root'),
+    path('api/', include('mozilla_django_oidc.urls'), name='oidc'),
+    path('api/v1/', include('api.urls'), name='root'),
 ]
