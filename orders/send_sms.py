@@ -19,8 +19,8 @@ class send():
         """
         
         try:
-            # short code is 17117
-            response = self.sms.send(message, recipients, sender=17117)
+            # my Africa's Talking short code is 17117
+            response = self.sms.send(message, recipients, env('AFT_SHORT_CODE'))
             status = response['SMSMessageData']['Recipients'][0]['status']
             if status == 'Success':
                 print("Message sent successfully.")
