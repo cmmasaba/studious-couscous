@@ -17,8 +17,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
     # only permit authenticated users and owners of the object
-    permission_classes = [permissions.IsAuthenticated,
-                          IsOwner]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 """Defning the api root"""
