@@ -21,4 +21,4 @@ django-nose = "==1.4.7"
 [dev-packages]
 
 [requires]
-python_version = "3.12"
+python_version = "3.11.5"
