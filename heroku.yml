@@ -2,7 +2,7 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn -w 4 api-service.wsgi:application --bind 0.0.0.0:$PORT
+  web: gunicorn -w 4 api_service.wsgi:application --bind 0.0.0.0:$PORT
 release:
   image: web
   command:
