@@ -1,4 +1,4 @@
-python==3.11.5
+python==3.11.4
 africastalking==1.2.7
 Django==5.0.1
 django_environ==0.11.2
