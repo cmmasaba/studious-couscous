@@ -25,7 +25,7 @@ Authentication and authorization of users is done using OpenID Connect.
 
 ## 2. Database Models and Design
 <img src="static/images/db_design.png" width="1000" height="600" ><br>
-The underlying database server used for this service is PostgreSQL. The database models are designed to be very simple.
+<br>The underlying database server used for this service is PostgreSQL. The database models are designed to be very simple.
 
 #### 2.1 Customers model
 The customers have very few details.
