@@ -6,3 +6,4 @@ Flask==3.0.2
 uritemplate==4.1.1
 psycopg2-binary==2.9.9
 mozilla-django-oidc==4.0.0
+django-nose==1.4.7
