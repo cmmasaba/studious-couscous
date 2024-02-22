@@ -23,7 +23,6 @@ jobs:
       AFT_SHORT_CODE: ${{ secrets.AFT_SHORT_CODE }}
       AFT_USERNAME: ${{ secrets.AFT_USERNAME }}
 
-
     services:
       postgres:
         image: 'postgres:alpine'
