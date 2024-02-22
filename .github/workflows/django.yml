@@ -1,4 +1,4 @@
-name: Django CI
+name: Verify Django is working
 
 on:
   push:
