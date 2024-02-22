@@ -81,7 +81,10 @@ For testing purposes I am using the Sandbox app, therefore the message is not ac
 
 ## 6. API Documentation
 This API's schema and documentation has been generated in accordance to the [OpenAPI](https://www.openapis.org/ "OpenAPI homepage") specifications.<br>
-Please visit these links for a detailed description of the [schema](#) and [documentation](#).
+Please visit these links for in-depth details:
+- [Redocs](https://studious-couscous-c01a4bc36def.herokuapp.com/api/v1/docs/ "API Redoc")
+- [Swagger Docs](https://studious-couscous-c01a4bc36def.herokuapp.com/api/v1/swagger-docs/ "API Swagger docs")
+- [API Schema](https://studious-couscous-c01a4bc36def.herokuapp.com/api/schema/ "API Schema")
 
 ## 7. Contributions and License
 This work was done as part of the screening test for the backend developer role at Savannah Informatics, and is protected by the [MIT License](LICENSE "MIT License for the project"), all rights reserved.<br>
