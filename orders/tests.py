@@ -53,3 +53,9 @@ class OrderModelTest(TestCase):
         order = Order.objects.get(id=1)
         expected_object_name = f'{order.customer.first_name}'
         self.assertEqual(expected_object_name, 'test')
+    
+    '''def test_sms_sent(self):
+        order = Order.objects.get(id=1)
+        expected_object_name = f'{order.send_sms()}'
+        self.assertEqual(expected_object_name, 'Message sent successfully')
+    '''
