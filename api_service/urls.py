@@ -27,7 +27,7 @@ urlpatterns = [
     # include urls for auhentication with mozilla-django-oidc
     path('api/v1/api-auth/', include('mozilla_django_oidc.urls')),
     path('api/v1/', include('api.urls')),
-    path('api/v1/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/v1/schema/', SpectacularAPIView.as_view(), name='schema'), # view schema
     path('api/v1/docs/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('api/v1/swagger-docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]
