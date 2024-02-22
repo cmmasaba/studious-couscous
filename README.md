@@ -48,7 +48,7 @@ Similarly the orders model is kept simple.
 
 ## 3. REST API
 The API serive is built using [Django REST framework](https://www.django-rest-framework.org/ "The Django REST framework docs homepage").<br>
-The browsable API can be accessed [here](#).<br>
+The browsable API can be accessed [here](https://studious-couscous-c01a4bc36def.herokuapp.com/api/v1/ "Link to the browsable API").<br>
 For detailed description of supported HTTP methods, how to invoke them, and expected responses, check out the [`API docs`](#api-documentation).<br>
 
 ### 3.1 Endpoints
