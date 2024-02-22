@@ -66,7 +66,7 @@ For detailed description of supported HTTP methods, how to invoke them, and expe
 - `/api/v1/api-auth/authenticate/`: login to the API using OpenID Connect and go to the home page.
 - `/api/v1/api-auth/logout/`: logout from the API and return to the home page.
 #### 3.1.5 Documentation and Schema endpoint
-- `/api/v1/schema/`: view the schema.
+- `/api/schema/`: download the schema.
 - `/api/v1/docs/`: view the redoc.
 - `/api/v1/swagger-docs/`: view the Swagger formatted docs.
 
