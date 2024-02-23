@@ -55,7 +55,8 @@ jobs:
       - name: Run migrations
       
         run: |
-          python manage.py makemigrations
+          python manage.py makemigrations --empty customers
+          python manage.py makemigrations --empty orders
           python manage.py migrate
 
       - name: Run Tests
