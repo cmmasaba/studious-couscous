@@ -18,6 +18,7 @@ dj-database-url = "==2.1.0"
 whitenoise = "==5.3.0"
 pytest-django = "==4.8.0"
 coverage = "==7.4.2"
+gunicorn = "*"
 
 [dev-packages]
 
