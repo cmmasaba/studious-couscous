@@ -1,21 +1,22 @@
 # SIMPLE REST API SERVICE
 
 ## Table of Contents
-1. [Description](#description)
-2. [Database models and design](#database-models-and-design)
-    - [Customers](#customers-model)
-    - [Models](#orders-model)
-3. [REST API](#rest-api)
-    - [Endpoints](#endpoints)
-        - [API root](#api-root)
-        - [Customers endpoint](#customers-endpoint)
-        - [Orders endpoint](#orders-endpoint)
-        - [Authentication endpoint](#authentication-endpoint)
-        - [Documentation and Schema endpoint](#documentation-and-schema-endpoint)
-4. [Authentication and Authorization](#authentication-endpoint)
-5. [SMS Notifications](#sms-notifications)
-6. [API Documentation](#api-documentation)
-7. [Contributions and License](#contributions-and-license)
+1. [Description](#1-description)
+2. [Database models and design](#2-database-models-and-design)
+    - [Customers model](#21-customers-model)
+    - [Orders model](#22-orders-model)
+3. [REST API](#3-rest-api)
+    - [Endpoints](#31-endpoints)
+        - [API root](#311-api-root)
+        - [Customers endpoint](#312-customers-endpoint)
+        - [Orders endpoint](#313-orders-endpoint)
+        - [Authentication endpoint](#314-authentication-endpoint)
+        - [Documentation and Schema endpoint](#315-documentation-and-schema-endpoint)
+4. [Authentication and Authorization](#4-authentication-and-authorization)
+5. [SMS Notifications](#5-sms-notifications)
+6. [Tests](#6-tests)
+7. [API Documentation](#7-api-documentation)
+8. [Contributions and License](#8-contributions-and-license)
 
 
 ## 1. Description
@@ -88,16 +89,16 @@ The screenshot below shows it works as expected.<br>
 <img src="static/images/sms_confirmation.png" width="550" height="600" ><br>
 
 
-## Tests
+## 6. Tests
 Unittests followed the usual Django testing procedures. For coverage tests I used the `coverage` module in combination with `djang-coverage-plugin`.
 
-## 6. API Documentation
+## 7. API Documentation
 This API's schema and documentation has been generated in accordance to the [OpenAPI](https://www.openapis.org/ "OpenAPI homepage") specifications.<br>
 Please visit these links for in-depth details:
 - [Redocs](https://studious-couscous-3195451bc2ab.herokuapp.com/api/v1/docs/ "View API Redoc"): View Redocs
 - [Swagger Docs](https://studious-couscous-3195451bc2ab.herokuapp.com/api/v1/swagger-docs/ "View API Swagger docs"): View Swagger docs
 - [API Schema](https://studious-couscous-3195451bc2ab.herokuapp.com/api/schema/ "Download API Schema"): Download Schema
 
-## 7. Contributions and License
+## 8. Contributions and License
 This work was done as part of the screening test for the backend developer role at Savannah Informatics, and is protected by the [MIT License](LICENSE "MIT License for the project"), all rights reserved.<br>
 
