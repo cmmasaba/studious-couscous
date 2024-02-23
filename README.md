@@ -45,6 +45,9 @@ Similarly the orders model is kept simple.
 - time_placed: hold the time the order was placed. It is autofilled when an order is created.
 - customer: a Foreign Key that associates a specific customer to an order instance. The relationship between an order and a customer is many-to-one. Many orders can belong to a single customer.
 - id: autogenrated and used as Primary Key
+##### Items
+This was supposed to be a model for items that can be ordered. Out of the interes of time I did not pursue this idea for long. In due time I will revisit it. The idea is that there should be a dropdown field of items for a user to select from when placing an order.<br>
+
 
 ## 3. REST API
 The API serive is built using [Django REST framework](https://www.django-rest-framework.org/ "The Django REST framework docs homepage").<br>
