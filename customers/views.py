@@ -21,7 +21,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
                           IsOwner]
     
     def perform_create(self, serializer):
-        serializer_class.save(owner=self.request.user)
+        serializer.save(owner=self.request.user)
 
 
 """Defning the api root"""
