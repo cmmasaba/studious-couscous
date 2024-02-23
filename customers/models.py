@@ -5,6 +5,7 @@ class Customer(models.Model):
     last_name = models.CharField(max_length=20) # last name of the customer
     phone = models.CharField(max_length=15, unique=True) # phone number of the customer
     code = models.CharField(max_length=5, unique=True) # unique code for the customer
+    owner = models.TextField()
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} -: {self.code}"
