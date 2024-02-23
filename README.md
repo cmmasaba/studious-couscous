@@ -82,7 +82,7 @@ I implemented the `object level permissions`, but there is a subtle bug that is 
 When an order is placed, an SMS notification is sent to the related customer using the [Africa's Talking](https://africastalking.com/, "Africa's Talking Homepage") gateway.<br>
 For testing purposes I am using the Sandbox app, therefore the messages are delivered to the sandbox app.<br>
 The screenshot below shows it works as expected.<br>
-<img src="static/images/sms_confirmation.png" width="1000" height="600" ><br>
+<img src="static/images/sms_confirmation.png" width="550" height="600" ><br>
 
 
 ## Tests
