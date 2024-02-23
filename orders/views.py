@@ -14,8 +14,9 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     # only permit authenticated users and owners of the object
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated,
+                          IsOwner]
     
-    #def perform_create(self, serializer):
-    #    """Associate the order with the customer."""
-    #    serializer.save(customer=self.request.user)
+    def perform_create(self, serializer):
+        """Associate the order with the customer."""
+        serializer.save(owner=self.request.user)
