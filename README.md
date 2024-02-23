@@ -48,7 +48,7 @@ Similarly the orders model is kept simple.
 
 ## 3. REST API
 The API serive is built using [Django REST framework](https://www.django-rest-framework.org/ "The Django REST framework docs homepage").<br>
-The browsable API can be accessed [here](https://studious-couscous-c01a4bc36def.herokuapp.com/api/v1/ "Link to the browsable API").<br>
+The browsable API can be accessed [here](https://studious-couscous-3195451bc2ab.herokuapp.com/api/v1/ "Link to the browsable API").<br>
 For detailed description of supported HTTP methods, how to invoke them, and expected responses, check out the [`API docs`](#api-documentation).<br>
 
 ### 3.1 Endpoints
@@ -74,17 +74,26 @@ For detailed description of supported HTTP methods, how to invoke them, and expe
 [OpenID Connect](https://auth0.com/docs/authenticate/protocols/openid-connect-protocol#:~:text=OpenID%20Connect%20(OIDC)%20is%20an,to%20the%20OAuth%202.0%20specifications. "The OpenID Connect Protocol homepage") is used to provide authentication to API. The OpenID Connect provider used is [Google](https://developers.google.com/identity/openid-connect/openid-connect#python "The Google OpenID Connect specification page").<br>
 To implement this feature I used a third party library, [Mozilla OIDC](https://mozilla-django-oidc.readthedocs.io/en/stable/installation.html, "Mozilla OIDC docs homepage"), which makes the task remarkably easy.<br>
 To enforce authorization, I used the `permission_classes` of Django REST to ensure only authenticated users can create, read, update or delete the models.<br>
+#### Warning
+Having the `IsAuthenticated` as the only permission class is security flaw. That means any authenticated user can perform any kind of operation on the customer/order instances even if they did not create them. This will be problematic in a setting where the API is used by many parties.<br>
+I implemented the `object level permissions`, but there is a subtle bug that is causing that mechanism to fail. And so I cannot use it yet in production but the code is there. Until I figure out where the bug is, let's assume the API will be used by only one person.<br>
 
 ## 5. SMS Notifications
 When an order is placed, an SMS notification is sent to the related customer using the [Africa's Talking](https://africastalking.com/, "Africa's Talking Homepage") gateway.<br>
-For testing purposes I am using the Sandbox app, therefore the message is not actually delivered to the customer. However, I save the gateway's response to a .txt file which can be examined to verify the message would have been delivered successfully.
+For testing purposes I am using the Sandbox app, therefore the messages are delivered to the sandbox app.<br>
+The screenshot below shows it works as expected.<br>
+<img src="static/images/sms_confirmation.png" width="1000" height="600" ><br>
+
+
+## Tests
+Unittests followed the usual Django testing procedures. For coverage tests I used the `coverage` module in combination with `djang-coverage-plugin`.
 
 ## 6. API Documentation
 This API's schema and documentation has been generated in accordance to the [OpenAPI](https://www.openapis.org/ "OpenAPI homepage") specifications.<br>
 Please visit these links for in-depth details:
-- [Redocs](https://studious-couscous-c01a4bc36def.herokuapp.com/api/v1/docs/ "API Redoc")
-- [Swagger Docs](https://studious-couscous-c01a4bc36def.herokuapp.com/api/v1/swagger-docs/ "API Swagger docs")
-- [API Schema](https://studious-couscous-c01a4bc36def.herokuapp.com/api/schema/ "API Schema")
+- [Redocs](https://studious-couscous-3195451bc2ab.herokuapp.com/api/v1/docs/ "API Redoc")
+- [Swagger Docs](https://studious-couscous-3195451bc2ab.herokuapp.com/api/v1/swagger-docs/ "API Swagger docs")
+- [API Schema](https://studious-couscous-3195451bc2ab.herokuapp.com/api/schema/ "API Schema")
 
 ## 7. Contributions and License
 This work was done as part of the screening test for the backend developer role at Savannah Informatics, and is protected by the [MIT License](LICENSE "MIT License for the project"), all rights reserved.<br>
