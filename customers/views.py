@@ -17,10 +17,12 @@ class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
     # only permit authenticated users and owners of the object
-    permission_classes = [permissions.IsAuthenticated,
-                          IsOwner]
+    #permission_classes = [permissions.IsAuthenticated,
+    #                      IsOwner]
+    permission_classes = [permissions.IsAuthenticated,]
     
     def perform_create(self, serializer):
+        """Associate the customer with the user who created it."""
         serializer.save(owner=self.request.user)
 
 
