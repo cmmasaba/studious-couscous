@@ -42,7 +42,12 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         """Override the save method to send an SMS when the order is placed."""
         self.customer = Customer.objects.get(code=self.customer_code)
-        send_sms([self.customer.phone], f"Greetings {self.customer.first_name}. \
-                 Your order of {self.quantity} {self.item} has been placed at {self.time_placed}.\
-                 Thank you for choosing SIL.")
+        if self.item == 1:
+            send_sms([self.customer.phone], f"Hi {self.customer.first_name}. \
+                    Your order of {self.quantity} {self.item} has been placed.\
+                    Thank you for choosing SIL.")
+        else:
+            send_sms([self.customer.phone], f"Hi {self.customer.first_name}. \
+                    Your order of {self.quantity} {self.item}s has been placed.\
+                    Thank you for choosing SIL.")
         super().save(*args, **kwargs)
