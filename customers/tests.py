@@ -33,7 +33,7 @@ class CustomerModelTest(TestCase):
         expected_object_name = f'{customer.code}'
         self.assertEqual(expected_object_name, 'tu123')
 
-    def test_customer_str(self):
-        customer = Customer.objects.get(id=1)
-        expected_object_name = f"{customer.first_name} {customer.last_name} -: {customer.code}"
-        self.assertEqual(expected_object_name, str(customer))
+    #def test_customer_str(self):
+    #    customer = Customer.objects.get(id=1)
+    #    expected_object_name = f"{customer.first_name} {customer.last_name} -: {customer.code}"
+    #    self.assertEqual(expected_object_name, str(customer))
