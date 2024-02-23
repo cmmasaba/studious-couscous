@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'mozilla_django_oidc',
     'rest_framework',
     'drf_spectacular',
-    'django_nose',
 
     # Local apps
     'users.apps.UsersConfig',
@@ -216,8 +215,3 @@ SPECTACULAR_SETTINGS = {
 
 LOGIN_REDIRECT_URL = '/api/v1/'
 LOGOUT_REDIRECT_URL = '/api/v1/'
-
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=customers,orders,users',
-]
