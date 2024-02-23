@@ -20,6 +20,7 @@ class Order(models.Model):
     # time_placed is a required field and is automatically set to the current time when the order is created
     time_placed = models.DateTimeField(auto_now_add=True)
     time_closed = models.DateTimeField(null=True, blank=True)  # record when the order is closed
+    owner = models.TextField()
 
     # create a many-to-one relationship with the custoners model. 
     # Many orders can belong to one customer
