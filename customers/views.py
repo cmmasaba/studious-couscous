@@ -17,7 +17,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
     # only permit authenticated users and owners of the object
-    #permission_classes = [permissions.IsAuthenticated,
+    # permission_classes = [permissions.IsAuthenticated,
     #                      IsOwner]
     permission_classes = [permissions.IsAuthenticated,]
     
@@ -26,10 +26,11 @@ class CustomerViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
 
-"""Defning the api root"""
+"""Defning the api root
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
         'customers': reverse('customer-list', request=request, format=format),
         'orders': reverse('order-list', request=request, format=format)
     })
+"""
