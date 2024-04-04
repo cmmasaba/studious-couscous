@@ -14,7 +14,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     # only permit authenticated users and owners of the object
-    #permission_classes = [permissions.IsAuthenticated,
+    # permission_classes = [permissions.IsAuthenticated,
     #                      IsOwner]
     permission_classes = [permissions.IsAuthenticated,]
     
