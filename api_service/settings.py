@@ -71,9 +71,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-#ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
 
 ROOT_URLCONF = 'api_service.urls'
 
@@ -174,6 +173,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'PAGE_SIZE': 10,
 }
 
 OIDC_RP_CLIENT_ID = env('OIDC_RP_CLIENT_ID')
@@ -183,27 +183,6 @@ OIDC_OP_TOKEN_ENDPOINT = env('OIDC_OP_TOKEN_ENDPOINT')
 OIDC_OP_USER_ENDPOINT = env('OIDC_OP_USERINFO_ENDPOINT')
 OIDC_OP_JWKS_ENDPOINT = env('OIDC_OP_JWKS_ENDPOINT')
 OIDC_RP_SIGN_ALGO = env('OIDC_RP_SIGN_ALGO')
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'WARNING',
-    },
-    'loggers': {
-        'mozilla_django_oidc': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-    },
-}
 
 # Spectacular settings
 SPECTACULAR_SETTINGS = {
