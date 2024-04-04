@@ -23,5 +23,3 @@ def send_sms(recipients: list, message: str):
         "from": env('AFT_SHORT_CODE')
     }
     response = requests.post(url, headers=headers, data=data)
-    with open ('smsresponse.txt', 'w') as file:
-        file.write(response.text)
