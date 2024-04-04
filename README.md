@@ -90,7 +90,7 @@ The screenshot below shows it works as expected.<br>
 
 
 ## 6. Tests
-Unittests followed the usual Django testing procedures. For coverage tests I used the `coverage` module in combination with `djang-coverage-plugin`.
+Unittests followed the usual Django testing procedures. For coverage tests I used the `coverage` module in combination with `django-coverage-plugin`.
 
 ## 7. API Documentation
 This API's schema and documentation has been generated in accordance to the [OpenAPI](https://www.openapis.org/ "OpenAPI homepage") specifications.<br>
