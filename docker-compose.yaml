@@ -23,6 +23,24 @@ services:
       - 8000:8000
     depends_on:
       - db
+  
+  celery:
+    restart: always
+    build: .
+    command: celery -A api_service worker -l INFO
+    volumes:
+      - .:/api_service
+    depends_on:
+      - web
+      - rabbitmq3
+
+  rabbitmq3:
+    container_name: "rabbitmq"
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+
 
 volumes:
   postgres_data:
