@@ -29,7 +29,7 @@ environ.Env.read_env(Path.joinpath(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-prhsfj_s5s3spm!ytwcq6h11f3qcz$+6^=5^hv3ddbh8@8!fo&"
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
@@ -71,8 +71,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
 
 ROOT_URLCONF = 'api_service.urls'
 
@@ -195,3 +195,12 @@ SPECTACULAR_SETTINGS = {
 
 LOGIN_REDIRECT_URL = '/api/v1/'
 LOGOUT_REDIRECT_URL = '/api/v1/'
+
+# Celery settings
+
+# Celery URL for message passing
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# Allows you to store tasks results in Celery
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+# Set timezone
+CELERY_TIMEZONE = 'Africa/Nairobi'
