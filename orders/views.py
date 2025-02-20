@@ -1,6 +1,6 @@
 from orders.models import Order
 from rest_framework import permissions
-from orders.permissions import IsOwner
+from orders.permissions import IsAuthorOrViewOnly
 from rest_framework import viewsets
 
 from orders.serializers import OrderSerializer
@@ -13,11 +13,11 @@ class OrderViewSet(viewsets.ModelViewSet):
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-    # only permit authenticated users and owners of the object
-    # permission_classes = [permissions.IsAuthenticated,
-    #                      IsOwner]
-    permission_classes = [permissions.IsAuthenticated,]
+    permission_classes = [
+        permissions.IsAuthenticated,
+        IsAuthorOrViewOnly
+    ]
     
-    def perform_create(self, serializer):
+    '''def perform_create(self, serializer):
         """Associate the order with the user."""
-        serializer.save(owner=self.request.user)
+        serializer.save(owner=self.request.user)'''
