@@ -4,7 +4,7 @@ from orders.models import Order
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
     customer = serializers.ReadOnlyField(source='customer.__str__')
-    owner = serializers.ReadOnlyField(source='owner.username')
+    author = serializers.ReadOnlyField(source='author.username')
     
     def validate_quantity(self, value):
         if value <= 0:
@@ -19,4 +19,4 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
         fields = ['id', 'item', 'amount', 'quantity', 'price_per_unit', 'status',
-                  'customer_code', 'customer','time_placed', 'owner']
+                  'customer_code', 'customer','time_placed', 'author']
