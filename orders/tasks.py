@@ -6,7 +6,7 @@ env = environ.Env()
 
 # using the http endpoint to send sms
 @shared_task
-def send_sms(recipients: list, message: str):
+def send_sms(recipient: str, message: str):
     """
     Args:
         recipient (list): A list of phone number(s) to send the message to.
@@ -19,11 +19,11 @@ def send_sms(recipients: list, message: str):
         "Accept": "application/json"
     }
 
-    for recipient in recipients:
-        data = {
-            "username": env('AFT_USERNAME'),
-            "to": recipient,
-            "message": message,
-            "from": env('AFT_SHORT_CODE')
-        }
-        response = requests.post(url, headers=headers, data=data)
+
+    data = {
+        "username": env('AFT_USERNAME'),
+        "to": recipient,
+        "message": message,
+        "from": env('AFT_SHORT_CODE')
+    }
+    response = requests.post(url, headers=headers, data=data)
