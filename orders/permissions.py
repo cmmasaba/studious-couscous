@@ -10,4 +10,4 @@ class IsAuthorOrViewOnly(permissions.BasePermission):
             return True
 
         # only owners of an object can edit it or view it.
-        return obj.owner == request.user
+        return obj.author == request.user
