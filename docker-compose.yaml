@@ -27,19 +27,18 @@ services:
   celery:
     restart: always
     build: .
-    command: celery -A api_service worker -l INFO
+    command: celery -A api_service worker --loglevel=info --autoscale=10,2
     volumes:
       - .:/api_service
     depends_on:
       - web
-      - rabbitmq3
+      - redis
 
-  rabbitmq3:
-    container_name: "rabbitmq"
-    image: rabbitmq:3-management-alpine
+  redis:
+    container_name: "redis"
+    image: redis:7.4.2-alpine
     ports:
-      - 5672:5672
-      - 15672:15672
+      - 6379:6379
 
 
 volumes:
