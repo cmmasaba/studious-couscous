@@ -1,5 +1,4 @@
 from customers.models import Customer
-from rest_framework import permissions
 from customers.permissions import IsAuthorOrViewOnly
 
 from rest_framework import viewsets
@@ -14,10 +13,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     """
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [
-        permissions.IsAuthenticated,
-        IsAuthorOrViewOnly
-    ]
+    permission_classes = (IsAuthorOrViewOnly)
     
     """def perform_create(self, serializer):
         '''Associate the customer with the user who created it.'''
