@@ -22,6 +22,7 @@ class Customer(models.Model):
             code = self.code
             self.customers[code] = name
             json.dump(self.customers, file, indent=4)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} -: {self.code}"
