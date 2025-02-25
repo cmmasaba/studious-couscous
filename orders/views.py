@@ -12,7 +12,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-    permission_classes = (IsAuthorOrViewOnly)
+    permission_classes = (IsAuthorOrViewOnly,)
     
     '''def perform_create(self, serializer):
         """Associate the order with the user."""
