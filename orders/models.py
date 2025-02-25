@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 from customers.models import Customer
-from items.models import Item
+from datetime import datetime
 import json
 import os
 
@@ -39,6 +39,7 @@ with open(items_file, 'r') as file:
         for key, value in items.items():
             ITEMS[key] = value
 
+
 # Create your models here.
 class Order(models.Model):
     item = models.CharField(choices=ITEMS)  # the item in the order
@@ -67,19 +68,23 @@ class Order(models.Model):
         
         Return the total amount.
         """
-        item = Item.objects.get(item_code=self.item)
-        return self.quantity * item.price
+        return self.quantity * self.price_per_unit
+    
+    @property
+    def created_at(self):
+        return self.time_placed.strftime("%Y-%m-%d %H:%M")
     
     def save(self, *args, **kwargs):
         """Override the save method to send an SMS when the order is placed."""
 
         self.customer = Customer.objects.get(code=self.customer_code)
 
-        if self.item == 1:
+        if self.quantity == 1:
             send_sms(self.customer.phone, f"Hi {self.customer.first_name}. \
-                    Your order of {self.quantity} {self.item} has been placed.\
+                    Your order of {self.quantity} {self.item} has been placed at {datetime.now().strftime("%Y-%m-%d %H:%M")}.\
                     Thank you for choosing SIL.")
-        elif self.item > 1:
+        elif self.quantity > 1:
             send_sms(self.customer.phone, f"Hi {self.customer.first_name}. \
-                    Your order of {self.quantity} {self.item}s has been placed.\
+                    Your order of {self.quantity} {self.item}s has been placed at {datetime.now().strftime("%Y-%m-%d %H:%M")}.\
                     Thank you for choosing SIL.")
+        super().save(*args, **kwargs)
